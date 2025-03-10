@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import React from 'react'
-
+import Details from './Components/Details'
 import Home from './Components/Home'
 import Dashboard from './Components/Dashboard'
+import LoginSignUp from './Components/LoginSignUp'
 
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
 
   return (
     <>
-     <Dashboard/>
+    {/* <Details/> */}
+     {/* <Home/> */}
+     {/* <Dashboard/> */}
+     <LoginSignUp/>
     </>
   )
 }

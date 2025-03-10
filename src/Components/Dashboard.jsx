@@ -1,8 +1,9 @@
 import React from 'react'
-import Task from './Task'
+
 import { GoPlus } from "react-icons/go";
 
 const Dashboard = () => {
+  const taskarray = [{ id: 1, title: "Task1", completed: false ,time: "10:00am" }, { id: 2, title: "Task2" , completed: false ,time: "1:00pm" }, { id: 3, title: "Task3" , completed: false, time: "2:00pm" }, { id: 4, title: "Task4" , completed: false ,time: "3:00pm" }, { id: 5, title: "Task5" , completed: false ,time: "4:00pm" }]
   return (
     <div className='w-screen h-screen px-5  '>
 
@@ -11,14 +12,34 @@ const Dashboard = () => {
          <h4 className='text-[gray] font-medium text-base '> Thu 6 feb</h4>
         <h1 className='text-zinc-800 font-[900] text-3xl'>Today TO Do's :</h1>
         </div>
-      <div className='w-full h-[70vh] mt-5  overflow-y-auto'>
-        <Task />
+      <div className='w-full max-h-[70%] rounded-lg py-5  overflow-y-auto flex flex-wrap justify-start  gap-2 '> 
+
+          {
+            taskarray.map((Task ,index)=>{return(
+              <div key={index} className=' px-5 py-3  mt-3 w-40 h-25 bg-zinc-100 active:bg-zinc-400  shadow-md rounded-lg  '>
+              <div className=' flex justify-between items-center w-full'>
+               
+              <h5 className='text-[black] active:text-white font-medium text-base '> {Task.id}</h5>
+                 <h5 className='text-[black] active:text-white font-medium text-base '> {Task.time}</h5>
+                 
+              </div>
+              <div>
+              <h2 className='text-[black] active:text-white font-medium text-xl '>{Task.title}</h2>
+              </div>
+           </div>
+
+           
+           
+            )})
+          }
+    
         
+
 
         
         
         
-        <button className=  'px-5 py-3  mt-3 w-full h-25 bg-zinc-200  shadow-xl rounded-2xl flex justify-center items-center'>
+        <button className=  'px-5 py-3  mt-3 w-40 h-25 bg-zinc-200  shadow-xl rounded-lg flex justify-center items-center'>
          <GoPlus className='text-zinc-400  h-16 w-16 '/>
         </button>
       </div>
