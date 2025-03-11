@@ -8,9 +8,11 @@ const LoginSignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">
+    <div >
+         <div className="min-h-screen flex items-center justify-center relative">
+          <img className="absolute inset-0 opacity-30 object-contain w-full h-full" src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?t=st=1741602108~exp=1741605708~hmac=9e7c90a20388c9ee9e6fa406be424f59a7c60e07bed5145ab2324d563d3533b9&w=900" alt="" />
+         <div className=" p-8 rounded-lg shadow-lg w-80 h-120 max-w-md z-10 bg-transparent">
+        <h2 className="text-2xl font-bold mb-6 text-start">
           {isLogin ? 'Login' : 'Sign Up'}
         </h2>
         <form>
@@ -20,7 +22,7 @@ const LoginSignUp = () => {
                 Name
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                 id="name"
                 type="text"
                 placeholder="Name"
@@ -49,15 +51,16 @@ const LoginSignUp = () => {
               placeholder="Password"
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center flex-col gap-3 ">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 active:bg-blue-700 text-white font-bold py-2 px-24 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
               {isLogin ? 'Login' : 'Sign Up'}
             </button>
+            
             <button
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+              className=" align-baseline block font-bold text-sm text-blue-500 active:text-blue-800"
               type="button"
               onClick={toggleForm}
             >
@@ -66,6 +69,8 @@ const LoginSignUp = () => {
           </div>
         </form>
       </div>
+         </div>
+      
     </div>
   );
 };

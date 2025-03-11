@@ -3,7 +3,8 @@ import { IoChevronBackOutline, IoAddOutline } from "react-icons/io5";
 
 const Details = () => {
   return (
-    <div className="h-screen bg-[#f5f5f9] p-5">
+    <div className="h-screen  relative p-5">
+     <img className='absolute inset-0 z-[-1] opacity-50 object-contain w-screen h-screen' src="https://img.freepik.com/free-vector/appointment-booking-with-smartphone_23-2148554232.jpg?t=st=1741604065~exp=1741607665~hmac=7b5c39d3d9f18427df8571322826d982f6e04f76bd2476f1cfaa78ec11ca748f&w=900" alt="" />
     
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center">
@@ -15,7 +16,7 @@ const Details = () => {
       </div>
 
       
-      <form className= "bg-white h-[90%] rounded-2xl p-5 shadow-lg shadow-zinc-200">
+      <form className= " h-[90%] rounded-2xl z-10 bg-transparent   p-5 shadow-xl shadow-zinc-200">
         <div className="mb-6">
           <label className="block text-sm font-medium text-[#2a2a2e90] mb-1">Date</label>
           <input
