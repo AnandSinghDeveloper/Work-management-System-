@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import TodoContext from '../context/CreteContext';
+import { s } from 'motion/react-m';
 
 const LoginSignUp = () => {
+  const {setTodo}=React.useContext(TodoContext)
+  
   const [isLogin, setIsLogin] = useState(true);
+      
 
+   
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setTodo(setIsLogin)
   };
 
   return (
@@ -59,7 +66,7 @@ const LoginSignUp = () => {
               {isLogin ? 'Login' : 'Sign Up'}
             </button>
             
-            <button
+            <button  
               className=" align-baseline block font-bold text-sm text-blue-500 active:text-blue-800"
               type="button"
               onClick={toggleForm}

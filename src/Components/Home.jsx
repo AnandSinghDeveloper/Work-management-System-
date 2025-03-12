@@ -1,6 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router'
+import TodoContext from '../context/CreteContext'
+
 
 const Home = () => {
+
+  const { todo , setTodo } = React.useContext(TodoContext)
+ 
+ 
+  
   return (
     <div className='flex flex-col pt-10 justify-start items-center h-screen'>
       <div >
@@ -9,12 +17,12 @@ const Home = () => {
 
     <div className='flex flex-col justify-center gap-5 items-center h-full'>
       <div className=' w-3/4 text-center'>
-      <h1 className=' text-2xl font-semibold text-[#527C06]'>Start your day a Smile </h1 >
-      <p className='  font-normal    text-[#AAFF01]'>Plan your day ahead it's easiesr than you think</p>
+      <h1 className=' text-2xl font-semibold text-blue-700'>Start your day a Smile </h1 >
+      <p className='  font-normal    text-[#01b7ff]'>Plan your day ahead it's easiesr than you think</p>
       </div>
         
-          <button  className= ' bg-white text-[#527C06] active:bg-[#AAFF01] border border-[#527C06] w-40 h-10 shadow-md  active:text-white  rounded-lg'>SignUp</button>
-          <button  className= ' bg-white text-[#527C06] active:bg-[#AAFF01] border border-[#527C06] w-40 h-10 shadow-md  active:text-white  rounded-lg'>Login</button>
+          <Link to="/login"  className= ' bg-white flex justify-center items-center text-[#06357c] active:bg-[#0195ff] border border-[#06087c] w-40 h-10 shadow-md  active:text-white  rounded-lg'>Login</Link>
+         
          
            
     </div>

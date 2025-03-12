@@ -64,7 +64,7 @@ const Details = () => {
             </div>
 
            
-            <div className=" overflow-y-auto webkit-scrollbar-none h-50 flex flex-col gap-3 ">
+            <div className=" overflow-y-auto webkit-scrollbar-none h-[30vh] flex flex-col gap-3 ">
             <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
                 <p className="text-base text-zinc-700">Complete project proposal</p>
                 <input
