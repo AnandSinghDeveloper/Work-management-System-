@@ -6,6 +6,14 @@ const LoginSignUp = () => {
   const {setTodo}=React.useContext(TodoContext)
   
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+  }
       
 
    
@@ -22,7 +30,7 @@ const LoginSignUp = () => {
         <h2 className="text-2xl font-bold mb-6 text-start">
           {isLogin ? 'Login' : 'Sign Up'}
         </h2>
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)} >
           {!isLogin && (
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -30,6 +38,8 @@ const LoginSignUp = () => {
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 id="name"
                 type="text"
                 placeholder="Name"
@@ -43,6 +53,8 @@ const LoginSignUp = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Email"
             />
@@ -54,6 +66,8 @@ const LoginSignUp = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
             />
