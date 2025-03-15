@@ -21,7 +21,9 @@ const Home = () => {
       <p className='  font-normal    text-[#01b7ff]'>Plan your day ahead it's easiesr than you think</p>
       </div>
         
-          <Link to="/login"  className= ' bg-white flex justify-center items-center text-[#06357c] active:bg-[#0195ff] border border-[#06087c] w-40 h-10 shadow-md  active:text-white  rounded-lg'>Login</Link>
+          <Link to="/Login"  className= ' bg-white flex justify-center items-center text-[#06357c] active:bg-[#0195ff] border border-[#06087c] w-40 h-10 shadow-md  active:text-white  rounded-lg'>Login</Link>
+
+          <Link to="/SignUp"  className= ' bg-white flex justify-center items-center text-[#06357c] active:bg-[#0195ff] border border-[#06087c] w-40 h-10 shadow-md  active:text-white  rounded-lg'>SignUp</Link>
          
          
            
