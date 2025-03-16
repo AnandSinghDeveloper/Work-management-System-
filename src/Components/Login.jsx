@@ -2,15 +2,16 @@ import React, { useRef } from 'react'
 import { Link } from 'react-router'
 import TodoContext from '../context/CreteContext'
 import { useState } from 'react'
-import Dashboard from './Dashboard'
+
+import { useNavigate } from 'react-router'
 
 const Login = () => {
-  const {setTodo}=React.useContext(TodoContext)
+  // const {setTodo}=React.useContext(TodoContext)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleDashbordref =  useRef(false)
 
- 
+ const Navigate = useNavigate()
  const handleSubmit = (e) => {
    e.preventDefault();
    
@@ -19,8 +20,9 @@ const Login = () => {
    console.log(user);
   
 
-   setTodo(user);
-
+  //  setTodo(user);
+    
+   Navigate('/dashboard')
   
 
    setEmail('');
@@ -69,21 +71,23 @@ const Login = () => {
          placeholder="Password"
        />
      </div>
-    
-   </form>
-   <div className="flex items-center flex-col gap-3 ">
-       <Link 
+
+     <div className="flex items-center flex-col gap-3 ">
+       <button 
      
-       to="/Dashboard"
+       type='submit'
          className="bg-blue-500 active:bg-blue-700 text-white font-bold py-2 px-24 rounded focus:outline-none focus:shadow-outline"
          
        >
          Login
        
-       </Link>
+       </button>
        
        
      </div>
+    
+   </form>
+   
  </div>
     </div>
  

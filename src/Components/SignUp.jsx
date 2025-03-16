@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import TodoContext from '../context/CreteContext';
-import { s } from 'motion/react-m';
+
+import { Navigate, useNavigate } from 'react-router';
 
 const SignUp = () => {
-  const {setTodo}=React.useContext(TodoContext)
   
+  // onst {setTodo}=React.useContext(TodoContext)
  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
+  const Navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const userSignUp = { email, password, name };
+
+    console.log(userSignUp);
+
+    // setTodo(userSignUp);
+
+    setEmail('');
+    setPassword('');
+    setName('');
+    Navigate('/dashboard')
 
   }
       
@@ -70,9 +84,10 @@ const SignUp = () => {
             />
           </div>
           <div className="flex items-center flex-col gap-3 ">
-            <button
+            <button 
+
               className="bg-blue-500 active:bg-blue-700 text-white font-bold py-2 px-24 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
             >
               SignUP
             

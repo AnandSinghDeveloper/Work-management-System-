@@ -10,12 +10,12 @@ import TodoContextProvider from './context/TodoContextProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <TodoContextProvider>
+
     <Provider store={store}> 
       <BrowserRouter>
        <App />
       </BrowserRouter>
     </Provider>
-    </TodoContextProvider>
+  
   </StrictMode>,
 )

@@ -5,7 +5,7 @@ import TodoContext from '../context/CreteContext'
 
 const Home = () => {
 
-  const { todo , setTodo } = React.useContext(TodoContext)
+  // const { todo , setTodo } = React.useContext(TodoContext)
  
  
   
