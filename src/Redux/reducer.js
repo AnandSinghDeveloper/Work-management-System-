@@ -1,26 +1,26 @@
-import { act } from "react";
+// import { act } from "react";
 
 
-const initialState={
-  todos:[
+// const initialState={
+//   todos:[
 
-  ]
-}
+//   ]
+// }
 
-   const reducerfn= (state=initialState, action)=>{
-    console.log(action.payload)
-  switch(action.type){
+//    const reducerfn= (state=initialState, action)=>{
+//     console.log(action.payload)
+//   switch(action.type){
    
-    case "ADD_TODO":return{
-      ...state,
-      todos:[...state.todos
+//     case "ADD_TODO":return{
+//       ...state,
+//       todos:[...state.todos
 
-      ]
-    }
+//       ]
+//     }
 
-    default : return state;
-  }
+//     default : return state;
+//   }
 
-   }
+//    }
 
-   export default reducerfn
+  //  export default reducerfn

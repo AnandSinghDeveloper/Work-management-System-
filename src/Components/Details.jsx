@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
 import { IoChevronBackOutline, IoAddOutline } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
+import { addTodo } from '../Redux/Slice.js';
+import { title } from 'motion/react-client';
+
 
 const Details = () => {
-const dispatch= useDispatch()
- const [todoDetails,setTodoDetails]= useState({
-  id:nanoid(),
-  date:"",
-  title:"",
-time:"",
-details:"" })
+
+  const todos = useSelector(state=>state.todos)
+
+  const [addtodostate,setAddtodostate]= useState("");
+
+  console.log(addtodostate);
+  
+
+   const dispatch= useDispatch()
+
+   const handletodoSubmit=(e)=>{
+     e.preventDefault();
+    
+      dispatch(addTodo(addtodostate))
+
+      setAddtodostate("")
+
+   }
 
 
-function setDetails(e) {
-  e.preventDefault()
-  const {name, value} = e.target;
-  setTodoDetails({
-    ...todoDetails,
-    [name]:value
-  })
-}
+// const dispatch= useDispatch()
+//  const [todoDetails,setTodoDetails]= useState({
+//   id : genrateID(),
+//   date:"",
+//   title:"",
+// time:"",
+// details:"" })
+
+
+// function setDetails(e) {
+//   e.preventDefault()
+//   const {name, value} = e.target;
+//   setTodoDetails({
+//     ...todoDetails,
+//     [name]:value,
+  
+//   })
+// }
+
+ 
 
 
   return (
@@ -37,18 +63,18 @@ function setDetails(e) {
       </div>
 
       
-      <form className= " h-[90%] rounded-2xl z-10 bg-transparent   p-5 shadow-xl shadow-zinc-200">
+      <form className= "  rounded-2xl z-10 bg-transparent   p-5 shadow-xl shadow-zinc-200">
         <div className="mb-6">
           <label className="block text-sm font-medium text-[#2a2a2e90] mb-1">Date</label>
           <input
           name='date'
             type="text" 
             value="Thu 6 Feb"
-            
+
            
             className="w-full text-base font-semibold text-[#2a2a2e90] outline-none"
 
-            onChange={setDetails}
+          
           />
         </div>
 
@@ -61,7 +87,7 @@ function setDetails(e) {
             readOnly
             placeholder="Enter title"
             className="w-full text-4xl font-medium text-[#2a2a2e] outline-none"
-            onChange={setDetails}
+           
           />
         </div>
 
@@ -75,70 +101,57 @@ function setDetails(e) {
             className="w-full text-base font-semibold text-zinc-600 outline-none"
           />
         </div>
+        </form>
 
+        <form onSubmit={(e)=>handletodoSubmit(e)} >
         <div className="">
           <h2 className="text-xl font-medium text-[#62bbf6] mb-4">Details:</h2>
           <div className="space-y-4">
            
+             
             <div className="flex items-center justify-between bg-[#f5f5f9] rounded-lg p-3">
               <input
               name='details'
+                value={addtodostate}
+                onChange={(e)=>setAddtodostate(e.target.value)}
                 type="text"
                 placeholder="Enter description"
                 className="w-full text-base font-base text-zinc-700 outline-none bg-transparent"
-                onChange={setDetails}
+               
               />
-              <button type="button" className="flex items-center justify-center h-8 w-8 bg-[#62bbf6] rounded-lg hover:bg-[#4aa8e3] transition-colors">
+              <button type="submit"
+              
+              
+              className="flex items-center justify-center h-8 w-8 bg-[#62bbf6] rounded-lg hover:bg-[#4aa8e3] transition-colors">
                 <IoAddOutline onClick={() => { }} className="text-white text-lg" />
               </button>
             </div>
 
            
             <div className=" overflow-y-auto webkit-scrollbar-none h-[30vh] flex flex-col gap-3 ">
-            <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p className="text-base text-zinc-700">Complete project proposal</p>
+            {
+              todos.map((todo )=>{
+                return(
+                  <div key={todo.id} className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
+                <p className="text-base text-zinc-700">{todo.title}</p>
                 <input
                   type="checkbox"
                   className="w-5 h-5 cursor-pointer"
                 />
               </div>
-             
-              <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p className="text-base text-zinc-700">Complete project proposal</p>
-                <input
-                  type="checkbox"
-                  className="w-5 h-5 cursor-pointer"
-                />
-              </div>
-              <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p className="text-base text-zinc-700">Complete project proposal</p>
-                <input
-                  type="checkbox"
-                  className="w-5 h-5 cursor-pointer"
-                />
-              </div>
-
-              
-              <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p className="text-base text-zinc-700">Call client for feedback</p>
-                <input
-                  type="checkbox"
-                  className="w-5 h-5 cursor-pointer"
-                />
-              </div>
-              <input type="submit" value="submit"  onClick={(e)=>{dispatch({
-                type:'ADD_TODO',
-              payload:todoDetails
+                )
               })
-              e.preventDefault()
-           
             }
+             
               
-              }/>
+              
+              
             </div>
+            
           </div>
         </div>
-      </form>
+        </form>
+      
     </div>
   );
 

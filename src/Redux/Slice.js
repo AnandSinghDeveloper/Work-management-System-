@@ -6,10 +6,7 @@
       name: "todo",
       initialState :{
         todos: [
-            {
-              id: 1,
-              title: "Learn Redux"
-            },
+            
 
                ]
          }, 
@@ -25,6 +22,15 @@
           state.todos.filter(todo => todo.id !== action.payload)
         },
         editTodo: (state, action) => {
+          state.todos.map(todo => {
+            if (todo.id === action.payload.id) {
+              todo.title = action.payload.title
+              return todo
+            } else {
+
+              return todo
+            }
+          })
               
         },
 

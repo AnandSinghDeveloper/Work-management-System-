@@ -10,7 +10,7 @@ import { Routes } from 'react-router'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>  
@@ -23,11 +23,7 @@ function App() {
       </Routes>
 
 
-       
-    {/* <Details/> */}
-     {/* <Home/>  */}
-      {/* <Dashboard/> */}
-     {/* <LoginSignUp/> */}
+
     </>
   )
 }
