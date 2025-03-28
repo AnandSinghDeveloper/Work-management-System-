@@ -5,14 +5,14 @@ import TodoContext from '../context/CreteContext'
 
 const Home = () => {
 
-  // const { todo , setTodo } = React.useContext(TodoContext)
+ 
  
  
   
   return (
     <div className='flex flex-col pt-10 justify-start items-center h-screen'>
       <div >
-        <img className=' w-full h-cover  ' src="https://img.freepik.com/free-vector/woman-checking-giant-check-list_23-2148099800.jpg?t=st=1741672911~exp=1741676511~hmac=895f6c1a87e4f9daa6ff7a2a35ea93debe622ceae24d93ea3eb8ff59477d2ae2&w=900" alt="image" />
+        <img className=' w-full h-contain object-cover ' src="https://img.freepik.com/free-vector/woman-checking-giant-check-list_23-2148099800.jpg?t=st=1741672911~exp=1741676511~hmac=895f6c1a87e4f9daa6ff7a2a35ea93debe622ceae24d93ea3eb8ff59477d2ae2&w=900" alt="image" />
       </div>
 
     <div className='flex flex-col justify-center gap-5 items-center h-full'>

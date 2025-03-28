@@ -6,7 +6,10 @@
       name: "todo",
       initialState :{
         todos: [
-            
+               {
+                 id: "1",
+                 title: "Learn Redux",
+               }
 
                ]
          }, 

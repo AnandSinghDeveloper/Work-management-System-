@@ -1,51 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoChevronBackOutline, IoAddOutline } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addTodo } from '../Redux/Slice.js';
-import { title } from 'motion/react-client';
+import { MdDeleteOutline } from "react-icons/md";
+import { removeTodo } from '../Redux/Slice.js';
+
+import { Link } from 'react-router';
+import { h2 } from 'motion/react-client';
 
 
 const Details = () => {
 
+
+
   const todos = useSelector(state=>state.todos)
-
   const [addtodostate,setAddtodostate]= useState("");
+   const changeColor= useRef(null);
 
-  console.log(addtodostate);
+ 
   
 
    const dispatch= useDispatch()
 
    const handletodoSubmit=(e)=>{
      e.preventDefault();
-    
-      dispatch(addTodo(addtodostate))
+      
+      if(addtodostate){
 
-      setAddtodostate("")
+        dispatch(addTodo(addtodostate))
+        setAddtodostate("")
+       }else{
+         alert("Please enter todo")
+       }
+
+       console.log(todos);
 
    }
-
-
-// const dispatch= useDispatch()
-//  const [todoDetails,setTodoDetails]= useState({
-//   id : genrateID(),
-//   date:"",
-//   title:"",
-// time:"",
-// details:"" })
-
-
-// function setDetails(e) {
-//   e.preventDefault()
-//   const {name, value} = e.target;
-//   setTodoDetails({
-//     ...todoDetails,
-//     [name]:value,
-  
-//   })
-// }
-
  
 
 
@@ -55,15 +46,15 @@ const Details = () => {
     
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center">
-          <div className="flex justify-center items-center h-10 w-10 shadow-lg shadow-zinc-200 rounded-lg cursor-pointer hover:bg-[#7269df10] transition-colors">
+          <Link to={"/dashboard"} className="flex justify-center items-center h-10 w-10 shadow-lg shadow-zinc-200 rounded-lg cursor-pointer hover:bg-[#7269df10] transition-colors">
             <IoChevronBackOutline className='text-2xl font-semibold text-[#7269df]' />
-          </div>
+          </Link>
           <h1 className="text-2xl font-semibold text-[#2a2a2e] ml-4">Todo Details</h1>
         </div>
       </div>
 
       
-      <form className= "  rounded-2xl z-10 bg-transparent   p-5 shadow-xl shadow-zinc-200">
+      <div className= "  rounded-2xl z-10 bg-transparent   p-5 shadow-xl shadow-zinc-200">
         <div className="mb-6">
           <label className="block text-sm font-medium text-[#2a2a2e90] mb-1">Date</label>
           <input
@@ -101,8 +92,8 @@ const Details = () => {
             className="w-full text-base font-semibold text-zinc-600 outline-none"
           />
         </div>
-        </form>
-
+       
+  
         <form onSubmit={(e)=>handletodoSubmit(e)} >
         <div className="">
           <h2 className="text-xl font-medium text-[#62bbf6] mb-4">Details:</h2>
@@ -121,7 +112,6 @@ const Details = () => {
               />
               <button type="submit"
               
-              
               className="flex items-center justify-center h-8 w-8 bg-[#62bbf6] rounded-lg hover:bg-[#4aa8e3] transition-colors">
                 <IoAddOutline onClick={() => { }} className="text-white text-lg" />
               </button>
@@ -130,28 +120,43 @@ const Details = () => {
            
             <div className=" overflow-y-auto webkit-scrollbar-none h-[30vh] flex flex-col gap-3 ">
             {
-              todos.map((todo )=>{
+              todos.map((todo, inx )=>{
                 return(
-                  <div key={todo.id} className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p className="text-base text-zinc-700">{todo.title}</p>
-                <input
+                  <div key={inx} className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
+                <p ref={changeColor} className={`text-base ${todo.completed ? "text-blue-500" : "text-zinc-700"}`}>{todo.title} </p>
+                
+                <div className="flex items-center gap-3">
+                <input  
+                 onClick={()=>{
+                   if(changeColor.current.style.color="black"){
+                     changeColor.current.style.color="blue"
+                   }else {
+                     changeColor.current.style.color="black"
+                   }
+                   
+                 }}
                   type="checkbox"
+                  
                   className="w-5 h-5 cursor-pointer"
                 />
+                <button type="button"  className='px-.5 py-.5 bg-[#f5f5f9] rounded'>
+                  <MdDeleteOutline className="text-2xl text-red-400 cursor-pointer"/>
+                </button>
+
+                </div>
+               
+
               </div>
                 )
               })
-            }
-             
               
-              
-              
+            }    
             </div>
             
           </div>
         </div>
         </form>
-      
+        </div>
     </div>
   );
 

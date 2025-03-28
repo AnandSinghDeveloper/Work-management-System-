@@ -6,9 +6,10 @@ import { Link } from 'react-router';
 
 const Dashboard = () => {
   const taskarray = [{ id: 1, title: "Task1", completed: false ,time: "10:00am" }, { id: 2, title: "Task2" , completed: false ,time: "1:00pm" }, { id: 3, title: "Task3" , completed: false, time: "2:00pm" }, { id: 4, title: "Task4" , completed: false ,time: "3:00pm" }, { id: 5, title: "Task5" , completed: false ,time: "4:00pm" }]
-  const todos= useSelector(state=>state.todos)
-const dispatch=useDispatch()
-  console.log(todos)
+
+  console.log(taskarray)
+ 
+ 
   return (
     <div className='w-screen h-screen px-5  '>
 
