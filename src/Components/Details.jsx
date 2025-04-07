@@ -5,18 +5,38 @@ import { useSelector } from 'react-redux';
 import { addTodo } from '../Redux/Slice.js';
 import { MdDeleteOutline } from "react-icons/md";
 import { removeTodo } from '../Redux/Slice.js';
-
 import { Link } from 'react-router';
 import { h2 } from 'motion/react-client';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+
 
 
 const Details = () => {
 
 
+  const [style , setStyle]= useState(false);
 
   const todos = useSelector(state=>state.todos)
   const [addtodostate,setAddtodostate]= useState("");
-   const changeColor= useRef(null);
+   const changeStyle= useRef(null);
+
+
+useGSAP(()=>{
+    if(style){
+      gsap.to(changeStyle.current,{
+        color:"#62BBF6",
+        duration:.5,
+        ease:"power1.inOut",
+        textDecoration:"line-through"
+    })
+    }else{
+      gsap.to(changeStyle.current,{
+        color:"black",
+        textDecoration : "none",
+      })
+    }
+},[style])
 
  
   
@@ -85,7 +105,6 @@ const Details = () => {
         <div className="mb-6">
           <label className="block text-sm font-medium text-[#2a2a2e90] mb-1">Time</label>
           <input
-     
             type="text"
             value="10:00 am"
             readOnly
@@ -123,20 +142,14 @@ const Details = () => {
               todos.map((todo, inx )=>{
                 return(
                   <div key={inx} className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm">
-                <p ref={changeColor} className={`text-base ${todo.completed ? "text-blue-500" : "text-zinc-700"}`}>{todo.title} </p>
+                <p ref={changeStyle} >{todo.title} </p>
                 
                 <div className="flex items-center gap-3">
                 <input  
-                 onClick={()=>{
-                   if(changeColor.current.style.color="black"){
-                     changeColor.current.style.color="blue"
-                   }else {
-                     changeColor.current.style.color="black"
-                   }
-                   
-                 }}
+                 
                   type="checkbox"
-                  
+
+                  onChange={()=>setStyle(!style)}
                   className="w-5 h-5 cursor-pointer"
                 />
                 <button type="button"  className='px-.5 py-.5 bg-[#f5f5f9] rounded'>
