@@ -6,7 +6,6 @@ import { addTodo } from '../Redux/Slice.js';
 import { MdDeleteOutline } from "react-icons/md";
 import { removeTodo } from '../Redux/Slice.js';
 import { Link } from 'react-router';
-import { h2 } from 'motion/react-client';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
@@ -15,13 +14,12 @@ import { gsap } from 'gsap';
 const Details = () => {
 
 
-  const [style , setStyle]= useState(false);
+   const [style, setStyle] = useState(false);
 
   const todos = useSelector(state=>state.todos)
   const [addtodostate,setAddtodostate]= useState("");
-   const changeStyle= useRef(null);
-
-
+   const changeStyle= useRef(null); 
+ 
 useGSAP(()=>{
     if(style){
       gsap.to(changeStyle.current,{
@@ -54,8 +52,16 @@ useGSAP(()=>{
          alert("Please enter todo")
        }
 
-       console.log(todos);
+      //  console.log(todos);
 
+   }
+
+   const handleDelete=(todo)=>{
+     
+     dispatch(removeTodo(todo.id))
+
+     console.log(todo.id);
+     
    }
  
 
@@ -152,7 +158,7 @@ useGSAP(()=>{
                   onChange={()=>setStyle(!style)}
                   className="w-5 h-5 cursor-pointer"
                 />
-                <button type="button"  className='px-.5 py-.5 bg-[#f5f5f9] rounded'>
+                <button type="button"  onClick={()=>handleDelete(todo)}  className='px-.5 py-.5 bg-[#f5f5f9] rounded'>
                   <MdDeleteOutline className="text-2xl text-red-400 cursor-pointer"/>
                 </button>
 

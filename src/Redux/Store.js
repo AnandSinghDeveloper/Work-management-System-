@@ -2,7 +2,7 @@
 import  { todoSlice } from "./Slice";
  
 
- const store = configureStore({
+ const store = configureStore({ 
    reducer: todoSlice.reducer,
  });
 
